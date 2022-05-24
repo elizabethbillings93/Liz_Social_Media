@@ -39,7 +39,7 @@ module.exports ={
     // DELETE REQUEST FOR STATUS
     deleteStatus(req,res){
         // Find the status that is associated with the ID
-        Status.findOneandRemove({_id: req.params.statusId})
+        Status.findOneAndRemove({_id: req.params.statusId})
         // Then take the status
         .then((status)=>
         // if there is not one
@@ -57,7 +57,7 @@ module.exports ={
     // PUT REQUEST FOR UPDATED STATUS
     updatedStatus(req,res){
         // Find Status associated with the id, Replace the value of the field:body, run validation
-        Status.findOneandUpdate({_id:req.params.statusId},{$set:req.body},{runValidators: true, new: true})
+        Status.findOneAndUpdate({_id:req.params.statusId},{$set:req.body},{runValidators: true, new: true})
         // Then take the status
         .then((status)=>
         // if there is not one
@@ -72,7 +72,7 @@ module.exports ={
     // ADD A REACTION
     addReaction(req,res){
         // Fine one status and update according to the ID, add to array(if value is not present), run validators
-        Status.findOneandUpdate({_id: req.params.statusId},{$addToSet: {reactions: req.body}}, {runValidators:true, new:true})
+        Status.findOneAndUpdate({_id: req.params.statusId},{$addToSet: {reactions: req.body}}, {runValidators:true, new:true})
         // then take status
         .then((status)=>
         // if there is no status
@@ -89,7 +89,7 @@ module.exports ={
     // DELETE REACTION
     deleteReaction(req,res){
         // Find the status that is associated with the ID and remove all instances of a value that matches including reactions
-        Status.findOneandRemove({_id: req.params.statusId},{$pull:{reactions:{reactionsId: req.params.reactionsId}}},
+        Status.findOneAndRemove({_id: req.params.statusId},{$pull:{reactions:{reactionsId: req.params.reactionsId}}},
         //Mongoose does not automatically run validation 
         {runValidators: true, new: true})
         // then take status

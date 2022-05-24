@@ -45,7 +45,7 @@ module.exports={
     // PUT REQUEST TO UPDATE USER
     updateUser(req,res){
         // Find user associated with the id, Replace the value of the field:body, run validation
-        User.findOneandUpdate({_id: req.params.userId},{$set: req.body},{runValidators:true, new: true})
+        User.findOneAndUpdate({_id: req.params.userId},{$set: req.body},{runValidators:true, new: true})
         // then take the user
         .then((user)=>
             // if there is no user
@@ -62,7 +62,7 @@ module.exports={
     // DELETE REQUEST FOR USERS
     deleteUser(req,res){
         // Find the user associated with the ID
-        User.findOneandRemove({_id: req.params.userId})
+        User.findOneAndRemove({_id: req.params.userId})
         // Then take the user
         .then((user)=>
         // if there is no user
