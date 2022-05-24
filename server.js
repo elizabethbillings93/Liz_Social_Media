@@ -1,7 +1,7 @@
 // Pull in express library
 const express = require ('express');
 // Make variable for connection.js
-const db = require('./config/controller');
+const db = require('./config/connection');
 // Make variable for routes folder
 const routes = require('./routes');
 // Use open port or 3001
